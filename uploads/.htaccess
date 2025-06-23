@@ -1,0 +1,25 @@
+# Disable directory listing
+Options -Indexes
+
+# Block access to files with double extensions (e.g., file.php.jpg)
+<FilesMatch ".*\.[^.]+\.[^.]+$">
+    Require all denied
+</FilesMatch>
+
+# Disable execution/access of dangerous file types
+<FilesMatch "\.(deb|phps|phtml|js|php)$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "\.(php)$">
+    Require all denied
+</FilesMatch>
+
+# Block access to sensitive system/config files
+<FilesMatch "\.(htpasswd|ini|phps|fla|psd|log|sh)$">
+    Require all denied
+</FilesMatch>
+
+# Remove this unless you're intentionally using CGI execution (DANGEROUS)
+# AddHandler cgi-script .php .php3 .php4 .phtml .pl .py .jsp .asp .htm .shtml .sh .cgi .txt
+# Options +ExecCGI
